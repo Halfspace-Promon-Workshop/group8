@@ -412,7 +412,7 @@ function draw() {
     ctx.fillStyle = "#ffffff";
     ctx.font = "bold 36px Arial";
     ctx.textAlign = "center";
-    ctx.fillText("RUNNER GAME", canvas.width / 2, canvas.height / 2 - 30);
+    ctx.fillText("PROMON FUNRUN", canvas.width / 2, canvas.height / 2 - 30);
 
     ctx.fillStyle = "#ffd700";
     ctx.font = "24px Arial";
