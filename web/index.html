@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promon FunRun</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #1a1a2e;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #game-canvas {
+            border: 3px solid #4a4a6a;
+            border-radius: 8px;
+            background-color: #f7f7f7;
+        }
+
+        #controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        #sprite-upload {
+            display: none;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.1s, background-color 0.2s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        #upload-btn {
+            background-color: #6c5ce7;
+            color: white;
+        }
+
+        #upload-btn:hover {
+            background-color: #5b4cdb;
+        }
+
+        #start-btn {
+            background-color: #00b894;
+            color: white;
+        }
+
+        #start-btn:hover {
+            background-color: #00a383;
+        }
+
+        #score-display {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        #instructions {
+            color: #a0a0c0;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        #sprite-preview {
+            width: 60px;
+            height: 60px;
+            border: 2px dashed #4a4a6a;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background-color: #2a2a4a;
+        }
+
+        #sprite-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        #sprite-preview-text {
+            color: #6a6a8a;
+            font-size: 10px;
+            text-align: center;
+        }
+
+        #name-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(26, 26, 46, 0.95);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            z-index: 10;
+        }
+
+        #name-screen.hidden {
+            display: none;
+        }
+
+        #name-screen h1 {
+            color: #ffffff;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        #name-screen label {
+            color: #a0a0c0;
+            font-size: 18px;
+        }
+
+        #name-input {
+            padding: 12px 20px;
+            font-size: 18px;
+            border: 2px solid #4a4a6a;
+            border-radius: 5px;
+            background-color: #2a2a4a;
+            color: #ffffff;
+            text-align: center;
+            width: 250px;
+            outline: none;
+        }
+
+        #name-input:focus {
+            border-color: #6c5ce7;
+        }
+
+        #name-input::placeholder {
+            color: #6a6a8a;
+        }
+
+        #play-btn {
+            background-color: #00b894;
+            color: white;
+            margin-top: 10px;
+        }
+
+        #play-btn:hover {
+            background-color: #00a383;
+        }
+
+        #player-name-display {
+            color: #ffd700;
+            font-size: 18px;
+            margin-top: -10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <div id="name-screen">
+            <h1>PROMON FUNRUN</h1>
+            <label for="name-input">Enter your name:</label>
+            <input type="text" id="name-input" placeholder="Player" maxlength="20" autocomplete="off">
+            <button class="btn" id="play-btn">Play</button>
+        </div>
+        <div id="score-display">Score: 0 | High Score: 0</div>
+        <div id="player-name-display"></div>
+        <canvas id="game-canvas" width="800" height="300"></canvas>
+        <div id="controls">
+            <button class="btn" id="start-btn">Start Game</button>
+        </div>
+        <div id="instructions">
+            Press <strong>SPACE</strong> or <strong>CLICK</strong> to jump | Avoid the obstacles!
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
